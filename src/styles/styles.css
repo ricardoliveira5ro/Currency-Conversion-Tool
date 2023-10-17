@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Proza+Libre:wght@600&display=swap');
+
+.header {
+    @apply flex flex-row items-center justify-between px-24 py-6
+}
+
+.header-name {
+    @apply flex
+}
+
+.header-name h1 {
+    font-family: 'Proza Libre', sans-serif;
+    @apply text-2xl
+}
+
+.header-name p {
+    font-family: 'Proza Libre', sans-serif;
+    @apply text-4xl text-[var(--green-app)]
+}
+
+.header-side {
+    @apply flex flex-row items-center
+}
+
+.header-feedback {
+    
+}

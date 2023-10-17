@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 :root {
+  --green-app: rgb(4,137,82);
+}
+
+/*:root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -25,3 +29,4 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+*/
