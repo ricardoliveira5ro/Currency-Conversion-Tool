@@ -31,9 +31,24 @@ export default function Home() {
         </div>
       </header>
       <main className='main'>
-        <div className='main-title'>
-          <h1 className='text-white'>Currency conversion tool</h1>
-          <h3 className='text-white'>Check live currency exchange rates</h3>
+        <div className='main-header'>
+          <div className='main-title'>
+            <h1>Currency conversion tool</h1>
+            <h3>Check live currency exchange rates</h3>
+          </div>
+          <div className='main-date'>
+            <Image
+                src="/calendar.svg"
+                alt="Calendar icon"
+                width={45}
+                height={10}
+                className='rounded-lg'
+                priority
+            />
+            <p className='main-date-date'>July 18, 2022</p>
+            <p className='main-date-time'>14:15 GTM</p>
+            <hr></hr>
+          </div>
         </div>
       </main>
     </section>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Proza+Libre:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Lalezar&family=Ledger&family=Proza+Libre:wght@600&family=Roboto&display=swap');
 
 .page {
     height: 100vh;
@@ -34,11 +34,45 @@
 
 .header-feedback p {
     font-family: 'Lalezar', sans-serif;
-    
-    @apply pt-1 ml-1.5 text-xl  ;
+    @apply pt-1 ml-1.5 text-xl;
 }
 
 .main {
-    border: 1px solid black;
-    @apply flex flex-1 justify-center items-center bg-[var(--green-app)];
+    @apply flex flex-1 flex-col justify-start items-center bg-[var(--green-app)] py-10 pt-20;
+}
+
+.main-header {
+    @apply flex flex-row justify-between w-full px-36;
+}
+
+.main-title {
+    @apply flex flex-col;
+}
+
+.main-title h1 {
+    font-family: 'Kanit', sans-serif;
+    @apply text-white text-6xl;
+}
+
+.main-title h3 {
+    font-family: 'Ledger', sans-serif;
+    @apply text-2xl text-white mt-3 ml-1;
+}
+
+.main-date {
+    @apply flex flex-col;
+}
+
+.main-date hr {
+    @apply w-40 mt-2;
+}
+
+.main-date-date {
+    font-family: 'Roboto', sans-serif;
+    @apply text-white text-xl mt-2;
+}
+
+.main-date-time {
+    font-family: 'Roboto', sans-serif;
+    @apply text-white text-sm mt-1;
 }
