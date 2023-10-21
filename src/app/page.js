@@ -32,8 +32,8 @@ export default function Home() {
       </header>
       <main className='main'>
         <div className='main-title'>
-          <h1>Currency conversion tool</h1>
-          <h3>Check live currency exchange rates</h3>
+          <h1 className='text-white'>Currency conversion tool</h1>
+          <h3 className='text-white'>Check live currency exchange rates</h3>
         </div>
       </main>
     </section>

@@ -35,7 +35,7 @@
 .header-feedback p {
     font-family: 'Lalezar', sans-serif;
     
-    @apply pt-1 ml-1.5 text-xl;
+    @apply pt-1 ml-1.5 text-xl  ;
 }
 
 .main {
