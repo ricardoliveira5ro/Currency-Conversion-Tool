@@ -1,27 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Proza+Libre:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Proza+Libre:wght@600&display=swap');
+
+.page {
+    height: 100vh;
+    @apply flex flex-col;
+}
 
 .header {
-    @apply flex flex-row items-center justify-between px-24 py-6
+    @apply flex flex-row items-center justify-between px-36 py-6;
 }
 
 .header-name {
-    @apply flex
+    @apply flex;
 }
 
 .header-name h1 {
     font-family: 'Proza Libre', sans-serif;
-    @apply text-2xl
+    @apply text-2xl;
 }
 
 .header-name p {
     font-family: 'Proza Libre', sans-serif;
-    @apply text-4xl text-[var(--green-app)]
+    @apply text-4xl text-[var(--green-app)];
 }
 
 .header-side {
-    @apply flex flex-row items-center
+    @apply flex flex-row items-center;
 }
 
 .header-feedback {
+    border: 0.125rem solid black;
+    @apply flex flex-row items-center justify-center px-7 py-1 rounded-md ml-5;
+}
+
+.header-feedback p {
+    font-family: 'Lalezar', sans-serif;
     
+    @apply pt-1 ml-1.5 text-xl;
+}
+
+.main {
+    border: 1px solid black;
+    @apply flex flex-1 justify-center items-center bg-[var(--green-app)];
 }
