@@ -53,6 +53,88 @@ export default function Home() {
             <hr></hr>
           </div>
         </div>
+
+        <form className='w-full'>
+          <div className='main-white-container'>
+              <div className='main-white-container-top'>
+                  <div className='label-input mr-8'>
+                    <label>Amount</label>
+                    <input type="number"></input>
+                    <hr></hr>
+                  </div>
+                  <div className='label-input'>
+                    <label>Base Currency</label>
+                    <div className='select-currency'>
+                      <input></input>
+                      <Image
+                        src="/down-arrow.svg"
+                        alt="Select icon"
+                        width={18}
+                        height={10}
+                        priority
+                      />
+                    </div>
+                    <hr></hr>
+                  </div>
+                  <a>
+                    <Image
+                        src="/exchange.svg"
+                        alt="Exchange icon"
+                        width={60}
+                        height={20}
+                        className='exchange-image'
+                        priority
+                    />
+                  </a>
+                  <div className='label-input mr-8'>
+                    <label>Amount</label>
+                    <input></input>
+                    <hr></hr>
+                  </div>
+                  <div className='label-input'>
+                    <label>Target Currency</label>
+                    <div className='select-currency'>
+                      <input></input>
+                      <Image
+                        src="/down-arrow.svg"
+                        alt="Select icon"
+                        width={18}
+                        height={10}
+                        priority
+                      />
+                    </div>
+                    <hr></hr>
+                  </div>
+              </div>
+
+              <div className='main-white-container-middle'>
+                <div className='rates-convert'>
+                  <div className='exchange-rates'>
+                    <p>1 USD = 18.1194 MXN</p>
+                    <p>1 MXN = 0.0551924 USD</p>
+                  </div>
+                  <button>Convert</button>
+                </div>
+                <hr></hr>
+              </div>
+
+              <div className='main-white-container-bottom'>
+                <div className='disclaimer'>
+                  <Image
+                    src="/exclamation-mark.png"
+                    alt="Select icon"
+                    width={20}
+                    height={10}
+                    priority
+                  />
+                  <div className='flex flex-col'>
+                    <p>Please note that currency exchange rates are subject to fluctuations and may vary from the rates displayed here</p>
+                    <p>Exchange rates displayed were last updated on {date} at {time}.</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </form>
       </main>
     </section>
     </>

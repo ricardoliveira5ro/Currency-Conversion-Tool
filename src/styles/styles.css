@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Lalezar&family=Ledger&family=Proza+Libre:wght@600&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Lalezar&family=Ledger&family=Proza+Libre:wght@600&family=Roboto&family=Ubuntu&display=swap');
 
 .page {
     height: 100vh;
@@ -38,11 +38,11 @@
 }
 
 .main {
-    @apply flex flex-1 flex-col justify-start items-center bg-[var(--green-app)] py-10 pt-20;
+    @apply flex flex-1 flex-col justify-start items-center bg-[var(--green-app)] py-10 pt-20 px-36;
 }
 
 .main-header {
-    @apply flex flex-row justify-between w-full px-36;
+    @apply flex flex-row justify-between w-full;
 }
 
 .main-title {
@@ -56,7 +56,7 @@
 
 .main-title h3 {
     font-family: 'Ledger', sans-serif;
-    @apply text-2xl text-white mt-3 ml-1;
+    @apply text-xl text-white mt-3 ml-1;
 }
 
 .main-date {
@@ -75,4 +75,66 @@
 .main-date-time {
     font-family: 'Roboto', sans-serif;
     @apply text-white text-sm mt-1;
+}
+
+.main-white-container {
+    @apply flex flex-col rounded-xl mt-16 py-7 px-6 bg-white;
+}
+
+.main-white-container-top {
+    @apply flex flex-row justify-around items-center;
+}
+
+.label-input {
+    @apply flex flex-col;
+}
+
+.label-input label{
+    font-family: 'Ubuntu', sans-serif;
+    @apply text-sm
+}
+
+.label-input input{
+    font-family: 'Ubuntu', sans-serif;
+    @apply text-6xl w-80 mt-2;
+}
+
+.exchange-image {
+    border: 2px solid var(--green-app);
+    @apply rounded-3xl mx-10;
+}
+
+.select-currency {
+    @apply flex flex-row items-center justify-between;
+}
+
+.main-white-container-middle {
+    @apply flex flex-col p-2 mt-5;
+}
+
+.rates-convert {
+    @apply flex flex-row justify-between items-center mb-5;
+}
+
+.rates-convert button {
+    font-family: 'Proza Libre', sans-serif;
+    @apply py-2 px-3 text-center text-white bg-[var(--green-app)] w-36 rounded-md;
+}
+
+.exchange-rates {
+    font-family: 'Roboto', sans-serif;
+    @apply text-sm
+}
+
+.main-white-container-bottom {
+    @apply flex p-2 mt-4;
+}
+
+.disclaimer {
+    @apply bg-[#e6f0ef] flex flex-row items-center justify-center p-3 rounded-md;
+}
+
+.disclaimer p {
+    font-family: 'Roboto', sans-serif;
+    @apply text-sm ml-2;
 }
