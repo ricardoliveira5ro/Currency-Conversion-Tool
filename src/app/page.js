@@ -1,7 +1,10 @@
 import Image from 'next/image'
 import '../styles/styles.css'
+import { getCurrentDateAndTime } from '../utils/globalFunctions'
 
 export default function Home() {
+  const { date, time } = getCurrentDateAndTime();
+
   return (
     <>
     <section className='page'>
@@ -45,8 +48,8 @@ export default function Home() {
                 className='rounded-lg'
                 priority
             />
-            <p className='main-date-date'>July 18, 2022</p>
-            <p className='main-date-time'>14:15 GTM</p>
+            <p className='main-date-date'>{date}</p>
+            <p className='main-date-time'>{time}</p>
             <hr></hr>
           </div>
         </div>
