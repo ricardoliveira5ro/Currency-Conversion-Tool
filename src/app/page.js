@@ -59,7 +59,7 @@ export default function Home() {
               <div className='main-white-container-top'>
                   <div className='label-input mr-8'>
                     <label>Amount</label>
-                    <input type="number"></input>
+                    <input type="number" placeholder='500.00'></input>
                     <hr></hr>
                   </div>
                   <div className='label-input'>
@@ -128,7 +128,7 @@ export default function Home() {
                     priority
                   />
                   <div className='flex flex-col'>
-                    <p>Please note that currency exchange rates are subject to fluctuations and may vary from the rates displayed here</p>
+                    <p>Please note that currency exchange rates are subject to fluctuations and may vary from the rates displayed here.</p>
                     <p>Exchange rates displayed were last updated on {date} at {time}.</p>
                   </div>
                 </div>

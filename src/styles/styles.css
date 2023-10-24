@@ -118,7 +118,7 @@
 
 .rates-convert button {
     font-family: 'Proza Libre', sans-serif;
-    @apply py-2 px-3 text-center text-white bg-[var(--green-app)] w-36 rounded-md;
+    @apply py-2.5 px-3.5 text-center text-lg text-white bg-[var(--green-app)] w-40 rounded-md;
 }
 
 .exchange-rates {
