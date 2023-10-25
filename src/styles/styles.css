@@ -127,14 +127,26 @@
 }
 
 .main-white-container-bottom {
-    @apply flex p-2 mt-4;
+    @apply flex flex-row p-2 mt-4 justify-start items-center;
 }
 
 .disclaimer {
-    @apply bg-[#e6f0ef] flex flex-row items-center justify-center p-3 rounded-md;
+    @apply bg-[#e6f0ef] flex flex-row h-fit items-center justify-center p-3 rounded-md mr-4;
 }
 
 .disclaimer p {
     font-family: 'Roboto', sans-serif;
     @apply text-sm ml-2;
+}
+
+.currency {
+    @apply rounded-lg;
+}
+
+.list-currencies {
+    @apply flex flex-row justify-around;
+}
+
+.list-currencies p,span {
+    @apply ml-3;
 }

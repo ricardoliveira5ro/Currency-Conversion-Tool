@@ -1,9 +1,29 @@
+"use client";
+
 import Image from 'next/image'
 import '../styles/styles.css'
 import { getCurrentDateAndTime } from '../utils/globalFunctions'
+import { Currencies } from '../utils/api';
+import { useState, useEffect } from 'react';
+
 
 export default function Home() {
   const { date, time } = getCurrentDateAndTime();
+  const [currencies, setCurrencies] = useState([]);
+
+  useEffect(() => {
+    Currencies()
+      .then((data) => {
+        if (data) {
+          const currencyList = Object.entries(data).map(([code, name]) => ({
+            code,
+            name,
+          }));
+          setCurrencies(currencyList);
+          console.log(currencyList)
+        }
+      });
+  }, []);
 
   return (
     <>
@@ -67,10 +87,11 @@ export default function Home() {
                     <div className='select-currency'>
                       <input></input>
                       <Image
-                        src="/down-arrow.svg"
-                        alt="Select icon"
-                        width={18}
+                        src="/globe.png"
+                        alt="Globe icon"
+                        width={25}
                         height={10}
+                        className='currency'
                         priority
                       />
                     </div>
@@ -96,10 +117,11 @@ export default function Home() {
                     <div className='select-currency'>
                       <input></input>
                       <Image
-                        src="/down-arrow.svg"
-                        alt="Select icon"
-                        width={18}
+                        src="/globe.png"
+                        alt="Globe icon"
+                        width={25}
                         height={10}
+                        className='currency'
                         priority
                       />
                     </div>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --green-app: rgb(4,137,82);
+  --green-app: rgb(4,137,82) /* #048952 */;
 }
 
 *:focus {
