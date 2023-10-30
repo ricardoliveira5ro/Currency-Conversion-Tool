@@ -91,7 +91,7 @@
 
 .label-input label{
     font-family: 'Ubuntu', sans-serif;
-    @apply text-sm
+    @apply text-sm ml-1
 }
 
 .label-input input{
@@ -143,10 +143,63 @@
     @apply rounded-lg;
 }
 
-.list-currencies {
-    @apply flex flex-row justify-around;
+.dropdown.dropdown--image{
+  @apply inline-block relative h-[45px] w-full;
 }
 
-.list-currencies p,span {
-    @apply ml-3;
+.dropdown{
+  @apply inline-block relative h-[40px];
+}
+
+.dropdown--image .dropdown__select{
+  @apply cursor-pointer;
+}
+
+.dropdown__select{
+  @apply cursor-pointer p-1;
+}
+
+.dropdown__select-wrap{
+  @apply w-full max-w-full whitespace-nowrap;
+}
+
+.dropdown__options-wrap{
+  max-width:calc(100% + 200px);
+  @apply overflow-auto hidden max-h-[200px] absolute top-[60px];
+}
+
+.dropdown__option {
+  @apply p-2 w-full;
+}
+
+.dropdown--image .dropdown__options-wrap{
+  max-width:calc(100% + 200px);
+  @apply hidden max-w-[200px] absolute top-[70px] overflow-auto;
+}
+
+.dropdown__options-wrap::-webkit-scrollbar {
+  @apply w-0
+}
+
+.dropdown__options-wrap::-webkit-scrollbar-thumb {
+  @apply bg-transparent
+}
+
+.dropdown__options-wrap::-webkit-scrollbar-track {
+  @apply bg-transparent
+}
+
+.dropdown--image .dropdown__options-wrap.active,
+.dropdown__options-wrap.active{
+  z-index: 99999;
+  border-bottom: none;
+  @apply inline-block w-full m-auto bg-[#becec1] top-[45px] cursor-pointer mt-1;
+}
+
+.dropdown__option:last-child{
+  border-bottom:none;
+}
+
+.dropdown__option:hover{
+  @apply bg-[#444]
 }

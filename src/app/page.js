@@ -4,26 +4,96 @@ import Image from 'next/image'
 import '../styles/styles.css'
 import { getCurrentDateAndTime } from '../utils/globalFunctions'
 import { Currencies } from '../utils/api';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 
 export default function Home() {
   const { date, time } = getCurrentDateAndTime();
   const [currencies, setCurrencies] = useState([]);
+  
+  const [isActiveBase, setIsActiveBase] = useState(false);
+  const [selectedValueBase, setSelectedValueBase] = useState('');
+  const [selectedImageBase, setSelectedImageBase] = useState('');
+  const [selectedAltBase, setSelectedAltBase] = useState('');
+
+  const toggleDropdownBase = () => {
+    setIsActiveBase(!isActiveBase);
+  };
+
+  const selectOptionBase = (value, imageUrl, code) => {
+    setSelectedValueBase(value);
+    setSelectedImageBase(imageUrl);
+    setSelectedAltBase(code);
+    setIsActiveBase(false);
+
+    baseCurrencyInput.current.value = code;
+  };
+
+  const [isActiveTarget, setIsActiveTarget] = useState(false);
+  const [selectedValueTarget, setSelectedValueTarget] = useState('');
+  const [selectedImageTarget, setSelectedImageTarget] = useState('');
+  const [selectedAltTarget, setSelectedAltTarget] = useState('');
+
+  const toggleDropdownTarget = () => {
+    setIsActiveTarget(!isActiveTarget);
+  };
+
+  const selectOptionTarget = (value, imageUrl, code) => {
+    setSelectedValueTarget(value);
+    setSelectedImageTarget(imageUrl);
+    setSelectedAltTarget(code);
+    setIsActiveTarget(false);
+
+    targetCurrencyInput.current.value = code;
+  };
+
+  const baseCurrencyInput = useRef(null);
+  const targetCurrencyInput = useRef(null);
 
   useEffect(() => {
     Currencies()
       .then((data) => {
         if (data) {
-          const currencyList = Object.entries(data).map(([code, name]) => ({
-            code,
-            name,
-          }));
+          const currencyList = Object.entries(data).map(([code, name]) => {
+            const imageSrc = `/currencies/${code}.png`;
+  
+            return {
+              code,
+              name,
+              imageSrc
+            };
+          });
+          
           setCurrencies(currencyList);
-          console.log(currencyList)
         }
       });
   }, []);
+
+  const handleCurrencyInputChange = (e, inputType) => {
+    const inputValue = e.target.value;
+
+    const selectedValueState =
+      inputType === 'base' ? setSelectedValueBase : setSelectedValueTarget;
+    const selectedImageState =
+      inputType === 'base' ? setSelectedImageBase : setSelectedImageTarget;
+    const selectedAltState =
+      inputType === 'base' ? setSelectedAltBase : setSelectedAltTarget;
+
+    const selectedCurrency = currencies.find(
+      (currency) => currency.code === inputValue
+    );
+    
+    if (selectedCurrency) {
+      selectedValueState(selectedCurrency.code);
+      selectedImageState(selectedCurrency.imageSrc);
+      selectedAltState(selectedCurrency.code);
+    
+    } else {
+      selectedValueState('Globe icon');
+      selectedImageState('/globe.png');
+      selectedAltState('Globe icon');
+    }
+  };
 
   return (
     <>
@@ -85,15 +155,40 @@ export default function Home() {
                   <div className='label-input'>
                     <label>Base Currency</label>
                     <div className='select-currency'>
-                      <input></input>
-                      <Image
-                        src="/globe.png"
-                        alt="Globe icon"
-                        width={25}
-                        height={10}
-                        className='currency'
-                        priority
-                      />
+                      <input ref={baseCurrencyInput} onChange={(e) => handleCurrencyInputChange(e, 'base')}></input>
+                      <div className="dropdown dropdown--image" value={selectedValueBase}>
+                        <div className="dropdown__select" onClick={toggleDropdownBase}>
+                          <div className="dropdown__select-wrap">
+                            <Image
+                              src={selectedImageBase || "/globe.png"}
+                              alt={selectedAltBase || "Globe icon"}
+                              width={42}
+                              height={15}
+                              className='currency'
+                              priority
+                            />
+                          </div>
+                        </div>
+                        <div className={`dropdown__options-wrap ${isActiveBase ? 'active' : ''}`}>
+                          {currencies.map((currency) => (
+                            <div
+                              key={currency.code}
+                              className="dropdown__option"
+                              onClick={() => selectOptionBase(currency.code, currency.imageSrc, currency.code)}
+                            >
+                              <Image
+                                src={currency.imageSrc}
+                                alt={currency.code}
+                                width={42}
+                                height={15}
+                                className='currency'
+                                priority
+                                data-value={currency.code}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                     <hr></hr>
                   </div>
@@ -115,15 +210,40 @@ export default function Home() {
                   <div className='label-input'>
                     <label>Target Currency</label>
                     <div className='select-currency'>
-                      <input></input>
-                      <Image
-                        src="/globe.png"
-                        alt="Globe icon"
-                        width={25}
-                        height={10}
-                        className='currency'
-                        priority
-                      />
+                      <input ref={targetCurrencyInput} onChange={(e) => handleCurrencyInputChange(e, 'target')}></input>
+                      <div className="dropdown dropdown--image" value={selectedValueTarget}>
+                        <div className="dropdown__select" onClick={toggleDropdownTarget}>
+                          <div className="dropdown__select-wrap">
+                            <Image
+                              src={selectedImageTarget || "/globe.png"}
+                              alt={selectedAltTarget || "Globe icon"}
+                              width={42}
+                              height={15}
+                              className='currency'
+                              priority
+                            />
+                          </div>
+                        </div>
+                        <div className={`dropdown__options-wrap ${isActiveTarget ? 'active' : ''}`}>
+                          {currencies.map((currency) => (
+                            <div
+                              key={currency.code}
+                              className="dropdown__option"
+                              onClick={() => selectOptionTarget(currency.code, currency.imageSrc, currency.code)}
+                            >
+                              <Image
+                                src={currency.imageSrc}
+                                alt={currency.code}
+                                width={42}
+                                height={15}
+                                className='currency'
+                                priority
+                                data-value={currency.code}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                     <hr></hr>
                   </div>
