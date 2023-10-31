@@ -10,6 +10,10 @@ import { useState, useEffect, useRef } from 'react';
 export default function Home() {
   const { date, time } = getCurrentDateAndTime();
   const [currencies, setCurrencies] = useState([]);
+
+  const [isConverted, setIsConverted] = useState(false);
+  const [baseRate, setBaseRate] = useState(0);
+  const [targetRate, settargetRate] = useState(0);
   
   const [isActiveBase, setIsActiveBase] = useState(false);
   const [selectedValueBase, setSelectedValueBase] = useState('');
@@ -70,7 +74,7 @@ export default function Home() {
   }, []);
 
   const handleCurrencyInputChange = (e, inputType) => {
-    const inputValue = e.target.value;
+    const inputValue = e.target.value.toUpperCase();
 
     const selectedValueState =
       inputType === 'base' ? setSelectedValueBase : setSelectedValueTarget;
@@ -94,6 +98,10 @@ export default function Home() {
       selectedAltState('Globe icon');
     }
   };
+
+  const swapCurrencies = () => {
+    
+  }
 
   return (
     <>
@@ -192,19 +200,18 @@ export default function Home() {
                     </div>
                     <hr></hr>
                   </div>
-                  <a>
-                    <Image
-                        src="/exchange.svg"
-                        alt="Exchange icon"
-                        width={60}
-                        height={20}
-                        className='exchange-image'
-                        priority
-                    />
-                  </a>
+                  <Image
+                    src="/exchange.svg"
+                    alt="Exchange icon"
+                    width={60}
+                    height={20}
+                    className='exchange-image'
+                    priority
+                    onClick={swapCurrencies}
+                  />
                   <div className='label-input mr-8'>
                     <label>Amount</label>
-                    <input></input>
+                    <span></span>
                     <hr></hr>
                   </div>
                   <div className='label-input'>
@@ -252,8 +259,12 @@ export default function Home() {
               <div className='main-white-container-middle'>
                 <div className='rates-convert'>
                   <div className='exchange-rates'>
-                    <p>1 USD = 18.1194 MXN</p>
-                    <p>1 MXN = 0.0551924 USD</p>
+                    { isConverted ?
+                      ( <>
+                        <p>1 USD = 18.1194 MXN</p>
+                        <p>1 MXN = 0.0551924 USD</p>
+                      </> ) : null
+                    }
                   </div>
                   <button>Convert</button>
                 </div>
@@ -269,7 +280,7 @@ export default function Home() {
                     height={10}
                     priority
                   />
-                  <div className='flex flex-col'>
+                  <div className='disclamer-info'>
                     <p>Please note that currency exchange rates are subject to fluctuations and may vary from the rates displayed here.</p>
                     <p>Exchange rates displayed were last updated on {date} at {time}.</p>
                   </div>

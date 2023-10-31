@@ -99,9 +99,19 @@
     @apply text-6xl w-80 mt-2;
 }
 
+.label-input span{
+  font-family: 'Ubuntu', sans-serif;
+  @apply text-6xl w-80 mt-2 h-[72px];
+}
+
 .exchange-image {
     border: 2px solid var(--green-app);
-    @apply rounded-3xl mx-10;
+    transition: transform 0.3s;
+    @apply rounded-3xl mx-10 cursor-pointer;
+}
+
+.exchange-image:hover {
+    transform: translateY(-7px);
 }
 
 .select-currency {
@@ -137,6 +147,10 @@
 .disclaimer p {
     font-family: 'Roboto', sans-serif;
     @apply text-sm ml-2;
+}
+
+.disclaimer-info {
+    @apply flex flex-col;
 }
 
 .currency {
