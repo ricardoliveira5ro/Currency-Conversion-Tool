@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import '../styles/styles.css'
 import { getCurrentDateAndTime } from '../utils/globalFunctions'
-import { Currencies } from '../utils/api';
+import { Currencies, Convert } from '../utils/api';
 import { useState, useEffect, useRef } from 'react';
 
 
@@ -13,7 +13,8 @@ export default function Home() {
 
   const [isConverted, setIsConverted] = useState(false);
   const [baseRate, setBaseRate] = useState(0);
-  const [targetRate, settargetRate] = useState(0);
+  const [targetRate, setTargetRate] = useState(0);
+  const [convertedAmount, setConvertedAmount] = useState(0);
   
   const [isActiveBase, setIsActiveBase] = useState(false);
   const [selectedValueBase, setSelectedValueBase] = useState('');
@@ -53,6 +54,8 @@ export default function Home() {
 
   const baseCurrencyInput = useRef(null);
   const targetCurrencyInput = useRef(null);
+  const amountInput = useRef(null);
+  const convertedAmountSpan = useRef(null);
 
   useEffect(() => {
     Currencies()
@@ -107,9 +110,6 @@ export default function Home() {
     let baseCurrency = baseCurrencyInput.current.value;
     let targetCurrency = targetCurrencyInput.current.value;
 
-    isCurrency(baseCurrency)
-    isCurrency(targetCurrency)
-
     if (baseCurrency && targetCurrency && isCurrency(baseCurrency) && isCurrency(targetCurrency)) {
       handleCurrencyInputChange(targetCurrency, 'base')
       handleCurrencyInputChange(baseCurrency, 'target')
@@ -118,6 +118,22 @@ export default function Home() {
       baseCurrencyInput.current.value = targetCurrency.toUpperCase();
     }
   }
+
+  const convert = () => {
+    let baseCurrency = baseCurrencyInput.current.value.toUpperCase();
+    let targetCurrency = targetCurrencyInput.current.value.toUpperCase();
+    let amount = amountInput.current.value;
+
+    if (baseCurrency && targetCurrency && isCurrency(baseCurrency) && isCurrency(targetCurrency) && amount && amount > 0) {
+      Convert(baseCurrency, targetCurrency, amount)
+        .then((data) => {
+          if (data) {
+            setIsConverted(true);
+            convertedAmountSpan.current.textContent = data.convertedAmount
+          }
+        });
+    }
+  };
 
   return (
     <>
@@ -168,12 +184,11 @@ export default function Home() {
           </div>
         </div>
 
-        <form className='w-full'>
           <div className='main-white-container'>
               <div className='main-white-container-top'>
                   <div className='label-input mr-8'>
                     <label>Amount</label>
-                    <input type="number" placeholder='500.00'></input>
+                    <input ref={amountInput} type="number" placeholder='500.00'></input>
                     <hr></hr>
                   </div>
                   <div className='label-input'>
@@ -227,7 +242,7 @@ export default function Home() {
                   />
                   <div className='label-input mr-8'>
                     <label>Amount</label>
-                    <span></span>
+                    <span ref={convertedAmountSpan}></span>
                     <hr></hr>
                   </div>
                   <div className='label-input'>
@@ -282,7 +297,7 @@ export default function Home() {
                       </> ) : null
                     }
                   </div>
-                  <button>Convert</button>
+                  <button onClick={convert}>Convert</button>
                 </div>
                 <hr></hr>
               </div>
@@ -303,7 +318,6 @@ export default function Home() {
                 </div>
               </div>
           </div>
-        </form>
       </main>
     </section>
     </>
