@@ -73,8 +73,12 @@ export default function Home() {
       });
   }, []);
 
-  const handleCurrencyInputChange = (e, inputType) => {
-    const inputValue = e.target.value.toUpperCase();
+  const isCurrency = (code) => {
+    return currencies.find((currency) => currency.code === code.toUpperCase());
+  };
+
+  const handleCurrencyInputChange = (value, inputType) => {
+    const inputValue = value.toUpperCase();
 
     const selectedValueState =
       inputType === 'base' ? setSelectedValueBase : setSelectedValueTarget;
@@ -100,7 +104,19 @@ export default function Home() {
   };
 
   const swapCurrencies = () => {
-    
+    let baseCurrency = baseCurrencyInput.current.value;
+    let targetCurrency = targetCurrencyInput.current.value;
+
+    isCurrency(baseCurrency)
+    isCurrency(targetCurrency)
+
+    if (baseCurrency && targetCurrency && isCurrency(baseCurrency) && isCurrency(targetCurrency)) {
+      handleCurrencyInputChange(targetCurrency, 'base')
+      handleCurrencyInputChange(baseCurrency, 'target')
+
+      targetCurrencyInput.current.value = baseCurrency.toUpperCase();
+      baseCurrencyInput.current.value = targetCurrency.toUpperCase();
+    }
   }
 
   return (
@@ -163,7 +179,7 @@ export default function Home() {
                   <div className='label-input'>
                     <label>Base Currency</label>
                     <div className='select-currency'>
-                      <input ref={baseCurrencyInput} onChange={(e) => handleCurrencyInputChange(e, 'base')}></input>
+                      <input ref={baseCurrencyInput} onChange={(e) => handleCurrencyInputChange(e.target.value, 'base')}></input>
                       <div className="dropdown dropdown--image" value={selectedValueBase}>
                         <div className="dropdown__select" onClick={toggleDropdownBase}>
                           <div className="dropdown__select-wrap">
@@ -217,7 +233,7 @@ export default function Home() {
                   <div className='label-input'>
                     <label>Target Currency</label>
                     <div className='select-currency'>
-                      <input ref={targetCurrencyInput} onChange={(e) => handleCurrencyInputChange(e, 'target')}></input>
+                      <input ref={targetCurrencyInput} onChange={(e) => handleCurrencyInputChange(e.target.value, 'target')}></input>
                       <div className="dropdown dropdown--image" value={selectedValueTarget}>
                         <div className="dropdown__select" onClick={toggleDropdownTarget}>
                           <div className="dropdown__select-wrap">
