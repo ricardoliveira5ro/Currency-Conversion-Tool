@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import '../styles/styles.css'
 import { getCurrentDateAndTime } from '../utils/globalFunctions'
-import { Currencies, Convert } from '../utils/api';
+import { Currencies, Convert, Rates } from '../utils/api';
 import { useState, useEffect, useRef } from 'react';
 
 
@@ -13,7 +13,9 @@ export default function Home() {
 
   const [isConverted, setIsConverted] = useState(false);
   const [baseRate, setBaseRate] = useState(0);
+  const [baseCurrency, setBaseCurrency] = useState('');
   const [targetRate, setTargetRate] = useState(0);
+  const [targetCurrency, setTargetCurrency] = useState('');
   const [convertedAmount, setConvertedAmount] = useState(0);
   
   const [isActiveBase, setIsActiveBase] = useState(false);
@@ -114,8 +116,7 @@ export default function Home() {
       handleCurrencyInputChange(targetCurrency, 'base')
       handleCurrencyInputChange(baseCurrency, 'target')
 
-      targetCurrencyInput.current.value = baseCurrency.toUpperCase();
-      baseCurrencyInput.current.value = targetCurrency.toUpperCase();
+      upperCaseInputs(targetCurrency, baseCurrency);
     }
   }
 
@@ -129,10 +130,36 @@ export default function Home() {
         .then((data) => {
           if (data) {
             setIsConverted(true);
-            convertedAmountSpan.current.textContent = data.convertedAmount
+
+            console.log(targetCurrency)
+
+            var convertedAmount = parseFloat(data.convertedAmount).toFixed(3).replace(/\.?0*$/, '');
+            convertedAmountSpan.current.textContent = convertedAmount;
+            setConvertedAmount(convertedAmount);
+
+            setTargetCurrency(data.targetCurrency);
+            setTargetRate(data.exchangeRate);
+            setBaseCurrency(data.baseCurrency);
+            reverseExchangeRate(baseCurrency, targetCurrency);
+
+            upperCaseInputs(baseCurrency, targetCurrency);
           }
         });
     }
+  };
+
+  const reverseExchangeRate = (baseCurrency, targetCurrency) => {
+    Rates(targetCurrency)
+      .then((data) => {
+        if (data) {
+          setBaseRate(data.rates[baseCurrency])
+        }
+      });
+  };
+
+  const upperCaseInputs = (baseCurrency, targetCurrency) => {
+    baseCurrencyInput.current.value = baseCurrency.toUpperCase();
+    targetCurrencyInput.current.value = targetCurrency.toUpperCase();
   };
 
   return (
@@ -292,8 +319,8 @@ export default function Home() {
                   <div className='exchange-rates'>
                     { isConverted ?
                       ( <>
-                        <p>1 USD = 18.1194 MXN</p>
-                        <p>1 MXN = 0.0551924 USD</p>
+                        <p>1 {baseCurrency} = {targetRate} {targetCurrency}</p>
+                        <p>1 {targetCurrency} = {baseRate} {baseCurrency}</p>
                       </> ) : null
                     }
                   </div>

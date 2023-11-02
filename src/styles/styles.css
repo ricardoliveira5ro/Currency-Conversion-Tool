@@ -101,7 +101,12 @@
 
 .label-input span{
   font-family: 'Ubuntu', sans-serif;
-  @apply text-6xl w-80 mt-2 h-[72px];
+  font-size: 65px; 
+  line-height: 1;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;     
+  @apply w-80 mt-2 h-[70px];                                                                                                                                                                                                                                                         
 }
 
 .exchange-image {
