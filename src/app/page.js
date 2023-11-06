@@ -168,13 +168,15 @@ export default function Home() {
           <p>See</p>
         </div>
         <div className='header-side'>
-          <Image
-            src="/github-sign.svg"
-            alt="GitHub Logo"
-            width={44}
-            height={10}
-            priority
-          />
+          <a href="https://github.com/ricardoliveira5ro" target="_blank" rel="noopener noreferrer">
+            <Image
+              src="/github-sign.svg"
+              alt="GitHub Logo"
+              width={44}
+              height={10}
+              priority
+            />
+          </a>
           <div className='header-feedback'>
             <Image
               src="/star.svg"
