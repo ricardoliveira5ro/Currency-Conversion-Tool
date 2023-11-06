@@ -129,10 +129,6 @@ export default function Home() {
       Convert(baseCurrency, targetCurrency, amount)
         .then((data) => {
           if (data) {
-            setIsConverted(true);
-
-            console.log(targetCurrency)
-
             var convertedAmount = parseFloat(data.convertedAmount).toFixed(3).replace(/\.?0*$/, '');
             convertedAmountSpan.current.textContent = convertedAmount;
             setConvertedAmount(convertedAmount);
@@ -153,6 +149,7 @@ export default function Home() {
       .then((data) => {
         if (data) {
           setBaseRate(data.rates[baseCurrency])
+          setIsConverted(true);
         }
       });
   };
