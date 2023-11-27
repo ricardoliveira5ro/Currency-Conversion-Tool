@@ -57,7 +57,7 @@ export default function Home() {
   const baseCurrencyInput = useRef(null);
   const targetCurrencyInput = useRef(null);
   const amountInput = useRef(null);
-  const convertedAmountSpan = useRef(null);
+  const convertedAmountInput = useRef(null);
 
   useEffect(() => {
     Currencies()
@@ -130,7 +130,7 @@ export default function Home() {
         .then((data) => {
           if (data) {
             var convertedAmount = parseFloat(data.convertedAmount).toFixed(3).replace(/\.?0*$/, '');
-            convertedAmountSpan.current.textContent = convertedAmount;
+            convertedAmountInput.current.value = convertedAmount;
             setConvertedAmount(convertedAmount);
 
             setTargetCurrency(data.targetCurrency);
@@ -268,7 +268,7 @@ export default function Home() {
                   />
                   <div className='label-input mr-8'>
                     <label>Amount</label>
-                    <span ref={convertedAmountSpan}></span>
+                    <input ref={convertedAmountInput} readOnly></input>
                     <hr></hr>
                   </div>
                   <div className='label-input'>

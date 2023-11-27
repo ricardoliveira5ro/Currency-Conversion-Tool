@@ -89,24 +89,25 @@
     @apply flex flex-col;
 }
 
-.label-input label{
+.label-input label {
     font-family: 'Ubuntu', sans-serif;
     @apply text-sm ml-1
 }
 
-.label-input input{
+.label-input input {
     font-family: 'Ubuntu', sans-serif;
-    @apply text-6xl w-80 mt-2;
+    @apply text-6xl mt-2 w-full;
 }
 
-.label-input span{
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 65px; 
-  line-height: 1;
-  max-width: 100%;
-  overflow: hidden;
-  white-space: nowrap;     
-  @apply w-80 mt-2 h-[70px];                                                                                                                                                                                                                                                         
+.label-input span {
+    /*font-family: 'Ubuntu', sans-serif;
+    font-size: 65px; 
+    line-height: 1;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;     
+    @apply w-[320px] mt-2 h-[70px];*/     
+    @apply w-full mt-2;                                                                                                                                                                                                                                                 
 }
 
 .exchange-image {
@@ -162,63 +163,63 @@
     @apply rounded-lg;
 }
 
-.dropdown.dropdown--image{
-  @apply inline-block relative h-[45px] w-full;
+.dropdown.dropdown--image {
+    @apply inline-block relative h-[45px];
 }
 
-.dropdown{
-  @apply inline-block relative h-[40px];
+.dropdown {
+    @apply inline-block relative h-[40px];
 }
 
-.dropdown--image .dropdown__select{
-  @apply cursor-pointer;
+.dropdown--image .dropdown__select {
+    @apply cursor-pointer;
 }
 
-.dropdown__select{
-  @apply cursor-pointer p-1;
+.dropdown__select {
+    @apply flex items-center justify-end cursor-pointer p-1;
 }
 
-.dropdown__select-wrap{
-  @apply w-full max-w-full whitespace-nowrap;
+.dropdown__select-wrap {
+    @apply w-[42px] h-[15px];
 }
 
-.dropdown__options-wrap{
-  max-width:calc(100% + 200px);
-  @apply overflow-auto hidden max-h-[200px] absolute top-[60px];
+.dropdown__options-wrap {
+    max-width:calc(100% + 200px);
+    @apply overflow-auto hidden max-h-[200px] absolute top-[60px];
 }
 
 .dropdown__option {
-  @apply p-2 w-full;
+    @apply p-2 w-fit;
 }
 
-.dropdown--image .dropdown__options-wrap{
-  max-width:calc(100% + 200px);
-  @apply hidden max-w-[200px] absolute top-[70px] overflow-auto;
+.dropdown--image .dropdown__options-wrap {
+    max-width:calc(100% + 200px);
+    @apply hidden max-w-[200px] absolute top-[70px] overflow-auto;
 }
 
 .dropdown__options-wrap::-webkit-scrollbar {
-  @apply w-0
+    @apply w-0
 }
 
 .dropdown__options-wrap::-webkit-scrollbar-thumb {
-  @apply bg-transparent
+    @apply bg-transparent
 }
 
 .dropdown__options-wrap::-webkit-scrollbar-track {
-  @apply bg-transparent
+    @apply bg-transparent
 }
 
 .dropdown--image .dropdown__options-wrap.active,
 .dropdown__options-wrap.active{
-  z-index: 99999;
-  border-bottom: none;
-  @apply inline-block w-full m-auto bg-[#becec1] top-[45px] cursor-pointer mt-1;
+    z-index: 99999;
+    border-bottom: none;
+    @apply inline-block w-full m-auto bg-[#becec1] top-[45px] cursor-pointer mt-1;
 }
 
 .dropdown__option:last-child{
-  border-bottom:none;
+    border-bottom:none;
 }
 
 .dropdown__option:hover{
-  @apply bg-[#444]
+    @apply bg-[#444]
 }
