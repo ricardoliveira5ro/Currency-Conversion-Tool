@@ -1,0 +1,77 @@
+@media (max-width: 1435px) {
+    .label-input input {
+        @apply text-5xl;
+    }
+    
+    .header {
+        @apply px-20;
+    }
+
+    .main {
+        @apply px-20;
+    }
+
+
+    @media (max-width: 1130px) {
+        .main-title h1 {
+            @apply text-5xl;
+        }
+        
+        .main-title h3 {
+            @apply text-lg;
+        }
+
+        .main-date-date {
+            @apply text-lg;
+        }
+        
+        .main-date-time {
+            @apply text-xs;
+        }
+
+        .label-input input {
+            @apply text-4xl;
+        }
+
+        .exchange-image {
+            @apply w-[50px];
+        }
+
+        .currency {
+            @apply w-[32px];
+        }
+
+        .dropdown__select-wrap {
+            @apply w-[35px];
+        }
+
+        .dropdown__options-wrap {
+            @apply max-h-[175px];
+        }
+
+        .dropdown.dropdown--image {
+            @apply h-[35px];
+        }
+
+        .dropdown--image .dropdown__options-wrap.active,
+        .dropdown__options-wrap.active{
+            @apply top-[38px];
+        }
+
+        .exchange-rates {
+            @apply text-xs
+        }
+
+        .rates-convert button {
+            @apply py-2 text-base;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .disclaimer p {
+            @apply text-[13px];
+        }
+    }
+
+    /* 950px */
+}

@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import '../styles/styles.css'
+import '../styles/media-queries.css'
 import { getCurrentDateAndTime } from '../utils/globalFunctions'
 import { Currencies, Convert, Rates } from '../utils/api';
 import { useState, useEffect, useRef } from 'react';
