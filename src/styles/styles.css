@@ -29,12 +29,17 @@
 
 .header-feedback {
     border: 0.125rem solid black;
+    transition: background-color 0.5s, color 0.5s;
     @apply flex flex-row items-center justify-center px-7 py-1 rounded-md ml-5;
 }
 
 .header-feedback p {
     font-family: 'Lalezar', sans-serif;
     @apply pt-1 ml-1.5 text-xl;
+}
+
+.header-feedback:hover {
+    @apply bg-[#424242] text-white;    
 }
 
 .main {
@@ -97,17 +102,6 @@
 .label-input input {
     font-family: 'Ubuntu', sans-serif;
     @apply text-6xl mt-2 w-full;
-}
-
-.label-input span {
-    /*font-family: 'Ubuntu', sans-serif;
-    font-size: 65px; 
-    line-height: 1;
-    max-width: 100%;
-    overflow: hidden;
-    white-space: nowrap;     
-    @apply w-[320px] mt-2 h-[70px];*/     
-    @apply w-full mt-2;                                                                                                                                                                                                                                                 
 }
 
 .exchange-image {

@@ -177,7 +177,7 @@ export default function Home() {
               priority
             />
           </a>
-          <div className='header-feedback'>
+          <a className='header-feedback' href="https://forms.gle/nG5exnnSw4by44PR7" target="_blank" rel="noopener noreferrer">
             <Image
               src="/star.svg"
               alt="Star icon"
@@ -186,7 +186,7 @@ export default function Home() {
               priority
             />
             <p>Feedback</p>
-          </div>
+          </a>
         </div>
       </header>
       <main className='main'>
