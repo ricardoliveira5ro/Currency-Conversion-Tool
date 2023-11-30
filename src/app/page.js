@@ -175,6 +175,7 @@ export default function Home() {
               alt="GitHub Logo"
               width={44}
               height={10}
+              className='github-image'
               priority
             />
           </a>
@@ -184,6 +185,7 @@ export default function Home() {
               alt="Star icon"
               width={17}
               height={5}
+              className='feedback-image'
               priority
             />
             <p>Feedback</p>
@@ -213,51 +215,53 @@ export default function Home() {
 
           <div className='main-white-container'>
               <div className='main-white-container-top'>
-                  <div className='label-input mr-8'>
-                    <label>Amount</label>
-                    <input ref={amountInput} type="number" placeholder='500.00'></input>
-                    <hr></hr>
-                  </div>
-                  <div className='label-input'>
-                    <label>Base Currency</label>
-                    <div className='select-currency'>
-                      <input ref={baseCurrencyInput} onChange={(e) => handleCurrencyInputChange(e.target.value, 'base')}></input>
-                      <div className="dropdown dropdown--image" value={selectedValueBase}>
-                        <div className="dropdown__select" onClick={toggleDropdownBase}>
-                          <div className="dropdown__select-wrap">
-                            <Image
-                              src={selectedImageBase || "/globe.png"}
-                              alt={selectedAltBase || "Globe icon"}
-                              width={42}
-                              height={15}
-                              className='currency'
-                              priority
-                            />
-                          </div>
-                        </div>
-                        <div className={`dropdown__options-wrap ${isActiveBase ? 'active' : ''}`}>
-                          {currencies.map((currency) => (
-                            <div
-                              key={currency.code}
-                              className="dropdown__option"
-                              onClick={() => selectOptionBase(currency.code, currency.imageSrc, currency.code)}
-                            >
+                  <div className='main-top-group'>
+                    <div className='label-input mr-8'>
+                      <label>Amount</label>
+                      <input ref={amountInput} type="number" placeholder='500.00'></input>
+                      <hr></hr>
+                    </div>
+                    <div className='label-input'>
+                      <label>Base Currency</label>
+                      <div className='select-currency'>
+                        <input ref={baseCurrencyInput} onChange={(e) => handleCurrencyInputChange(e.target.value, 'base')}></input>
+                        <div className="dropdown dropdown--image" value={selectedValueBase}>
+                          <div className="dropdown__select" onClick={toggleDropdownBase}>
+                            <div className="dropdown__select-wrap">
                               <Image
-                                src={currency.imageSrc}
-                                alt={currency.code}
+                                src={selectedImageBase || "/globe.png"}
+                                alt={selectedAltBase || "Globe icon"}
                                 width={42}
                                 height={15}
                                 className='currency'
                                 priority
-                                data-value={currency.code}
                               />
                             </div>
-                          ))}
+                          </div>
+                          <div className={`dropdown__options-wrap ${isActiveBase ? 'active' : ''}`}>
+                            {currencies.map((currency) => (
+                              <div
+                                key={currency.code}
+                                className="dropdown__option"
+                                onClick={() => selectOptionBase(currency.code, currency.imageSrc, currency.code)}
+                              >
+                                <Image
+                                  src={currency.imageSrc}
+                                  alt={currency.code}
+                                  width={42}
+                                  height={15}
+                                  className='currency'
+                                  priority
+                                  data-value={currency.code}
+                                />
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
+                      <hr></hr>
                     </div>
-                    <hr></hr>
-                  </div>
+                  </div>                  
                   <Image
                     src="/exchange.svg"
                     alt="Exchange icon"
@@ -267,50 +271,52 @@ export default function Home() {
                     priority
                     onClick={swapCurrencies}
                   />
-                  <div className='label-input mr-8'>
-                    <label>Amount</label>
-                    <input ref={convertedAmountInput} readOnly></input>
-                    <hr></hr>
-                  </div>
-                  <div className='label-input'>
-                    <label>Target Currency</label>
-                    <div className='select-currency'>
-                      <input ref={targetCurrencyInput} onChange={(e) => handleCurrencyInputChange(e.target.value, 'target')}></input>
-                      <div className="dropdown dropdown--image" value={selectedValueTarget}>
-                        <div className="dropdown__select" onClick={toggleDropdownTarget}>
-                          <div className="dropdown__select-wrap">
-                            <Image
-                              src={selectedImageTarget || "/globe.png"}
-                              alt={selectedAltTarget || "Globe icon"}
-                              width={42}
-                              height={15}
-                              className='currency'
-                              priority
-                            />
-                          </div>
-                        </div>
-                        <div className={`dropdown__options-wrap ${isActiveTarget ? 'active' : ''}`}>
-                          {currencies.map((currency) => (
-                            <div
-                              key={currency.code}
-                              className="dropdown__option"
-                              onClick={() => selectOptionTarget(currency.code, currency.imageSrc, currency.code)}
-                            >
+                  <div className='main-top-group'>
+                    <div className='label-input mr-8'>
+                      <label>Amount</label>
+                      <input ref={convertedAmountInput} readOnly></input>
+                      <hr></hr>
+                    </div>
+                    <div className='label-input'>
+                      <label>Target Currency</label>
+                      <div className='select-currency'>
+                        <input ref={targetCurrencyInput} onChange={(e) => handleCurrencyInputChange(e.target.value, 'target')}></input>
+                        <div className="dropdown dropdown--image" value={selectedValueTarget}>
+                          <div className="dropdown__select" onClick={toggleDropdownTarget}>
+                            <div className="dropdown__select-wrap">
                               <Image
-                                src={currency.imageSrc}
-                                alt={currency.code}
+                                src={selectedImageTarget || "/globe.png"}
+                                alt={selectedAltTarget || "Globe icon"}
                                 width={42}
                                 height={15}
                                 className='currency'
                                 priority
-                                data-value={currency.code}
                               />
                             </div>
-                          ))}
+                          </div>
+                          <div className={`dropdown__options-wrap ${isActiveTarget ? 'active' : ''}`}>
+                            {currencies.map((currency) => (
+                              <div
+                                key={currency.code}
+                                className="dropdown__option"
+                                onClick={() => selectOptionTarget(currency.code, currency.imageSrc, currency.code)}
+                              >
+                                <Image
+                                  src={currency.imageSrc}
+                                  alt={currency.code}
+                                  width={42}
+                                  height={15}
+                                  className='currency'
+                                  priority
+                                  data-value={currency.code}
+                                />
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
+                      <hr></hr>
                     </div>
-                    <hr></hr>
                   </div>
               </div>
 

@@ -90,13 +90,17 @@
     @apply flex flex-row justify-around items-center;
 }
 
+.main-top-group {
+    @apply flex flex-row;
+}
+
 .label-input {
     @apply flex flex-col;
 }
 
 .label-input label {
     font-family: 'Ubuntu', sans-serif;
-    @apply text-sm ml-1
+    @apply text-sm ml-0.5;
 }
 
 .label-input input {

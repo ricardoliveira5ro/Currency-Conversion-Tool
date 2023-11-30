@@ -73,5 +73,201 @@
         }
     }
 
-    /* 950px */
+    @media (max-width: 950px) {
+        .label-input input {
+            @apply text-3xl;
+        }
+        
+        .header {
+            @apply px-12;
+        }
+    
+        .main {
+            @apply px-12;
+        }
+
+        .main-title h1 {
+            @apply text-4xl;
+        }
+        
+        .main-title h3 {
+            @apply text-base;
+        }
+
+        .main-date-date {
+            @apply text-base;
+        }
+
+        .rates-convert button {
+            @apply py-2 text-sm;
+        }
+
+        .exchange-image {
+            @apply mx-8;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .label-input input {
+            @apply text-2xl;
+        }
+
+        .label-input label {
+            font-family: 'Ubuntu', sans-serif;
+            @apply text-xs
+        }
+    }
+
+    @media (max-width: 700px) {
+        .label-input input {
+            @apply text-xl;
+        }
+
+        .main-date {
+            @apply hidden;
+        }
+
+        .currency {
+            @apply w-[28px];
+        }
+
+        .dropdown__select-wrap {
+            @apply w-[32px];
+        }
+
+        .dropdown__options-wrap {
+            @apply max-h-[165px];
+        }
+
+        .dropdown.dropdown--image {
+            @apply h-[30px];
+        }
+
+        .dropdown--image .dropdown__options-wrap.active,
+        .dropdown__options-wrap.active{
+            @apply top-[30px];
+        }
+    }
+
+    @media (max-width: 660px) {
+        .github-image {
+            @apply w-[32px];
+        }
+
+        .header-feedback {
+            @apply px-4 py-0;
+        }
+
+        .header-feedback p {
+            @apply text-lg;
+        }
+
+        .feedback-image {
+            @apply w-[12px];
+        }
+
+        .exchange-image {
+            @apply w-[45px];
+        }
+
+        .main-white-container-top {
+            @apply flex-col;
+        }
+
+        .exchange-image {
+            @apply my-6;
+        }
+
+        .rates-convert button {
+            @apply w-32;
+        }
+
+        .disclaimer p {
+            @apply text-justify text-xs;
+        }
+    }
+
+    @media (max-width: 550px) {
+        .disclaimer {
+            @apply hidden;
+        }
+
+        .main-white-container-bottom {
+            @apply mt-0;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .header-name h1 {
+            @apply text-lg;
+        }
+        
+        .header-name p {
+            @apply text-2xl;
+        }
+
+        .main-title h1 {
+            @apply text-3xl;
+        }
+        
+        .main-title h3 {
+            @apply text-sm;
+        }
+
+        .rates-convert button {
+            @apply w-24 text-xs;
+        }
+    }
+
+    @media (max-width: 440px) {
+        .main-title h1 {
+            @apply text-[28px];
+        }
+        
+        .main-title h3 {
+            @apply text-sm;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .header-name h1 {
+            @apply text-base;
+        }
+        
+        .header-name p {
+            @apply text-xl;
+        }
+
+        .github-image {
+            @apply w-[28px];
+        }
+
+        .header-feedback {
+            @apply px-4 py-0 ml-2;
+        }
+
+        .header-feedback p {
+            @apply text-base;
+        }
+
+        .feedback-image {
+            @apply w-[10px];
+        }
+
+        .rates-convert button {
+            @apply w-20;
+        }
+
+        .main-title h1 {
+            @apply text-2xl;
+        }
+        
+        .main-title h3 {
+            @apply text-[13px];
+        }
+
+        .exchange-rates {
+            @apply text-[11px]
+        }
+    }
 }
